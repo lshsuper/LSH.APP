@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSH.APP.Code.Generator", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSH.APP.Infrastructure", "LSH.APP.Infrastructure\LSH.APP.Infrastructure.csproj", "{CCC8780A-7083-4A16-8149-2ECDB5208EE5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.类库", "01.类库", "{3463ABBE-93B8-4CEC-8688-CDB9A66FFC0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.应用", "02.应用", "{CE434B5B-20A5-47A8-885F-3579D88C746B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code.Generator", "Code.Generator", "{581FAE4C-1534-427D-86E2-B25FAE6DAFA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +30,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{382DAF23-B7C6-4E53-9ABE-A92E9A4E1ECF} = {581FAE4C-1534-427D-86E2-B25FAE6DAFA2}
+		{CCC8780A-7083-4A16-8149-2ECDB5208EE5} = {3463ABBE-93B8-4CEC-8688-CDB9A66FFC0E}
+		{581FAE4C-1534-427D-86E2-B25FAE6DAFA2} = {CE434B5B-20A5-47A8-885F-3579D88C746B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62C17EC3-11C1-4D3D-B899-A6E35A87049D}
