@@ -100,7 +100,7 @@
             // 关于软件ToolStripMenuItem
             // 
             this.关于软件ToolStripMenuItem.Name = "关于软件ToolStripMenuItem";
-            this.关于软件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.关于软件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.关于软件ToolStripMenuItem.Text = "关于软件";
             // 
             // splitContainer1
@@ -130,7 +130,7 @@
             this.db_tb_show.Size = new System.Drawing.Size(238, 262);
             this.db_tb_show.TabIndex = 1;
             this.db_tb_show.TabStop = false;
-            this.db_tb_show.Text = "数据库展示";
+            this.db_tb_show.Text = "数据表展示";
             // 
             // lb_tbs
             // 
