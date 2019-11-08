@@ -32,29 +32,29 @@
             this.tsmi_auth = new System.Windows.Forms.ToolStripMenuItem();
             this.tmsi_login = new System.Windows.Forms.ToolStripMenuItem();
             this.tmsi_about = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.gb_db_show = new System.Windows.Forms.GroupBox();
-            this.lb_dbs = new System.Windows.Forms.ListBox();
             this.db_tb_show = new System.Windows.Forms.GroupBox();
             this.lb_tbs = new System.Windows.Forms.ListBox();
+            this.gb_db_show = new System.Windows.Forms.GroupBox();
+            this.lb_dbs = new System.Windows.Forms.ListBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gb_operator = new System.Windows.Forms.GroupBox();
-            this.btn_create_model = new System.Windows.Forms.Button();
-            this.rtb_model_show = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_namespace = new System.Windows.Forms.TextBox();
-            this.btn_export_model = new System.Windows.Forms.Button();
+            this.btn_export_all_model = new System.Windows.Forms.Button();
             this.txt_export_path = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.关于软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_export_all_model = new System.Windows.Forms.Button();
+            this.btn_export_model = new System.Windows.Forms.Button();
+            this.txt_namespace = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_create_model = new System.Windows.Forms.Button();
+            this.rtb_model_show = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.gb_db_show.SuspendLayout();
             this.db_tb_show.SuspendLayout();
+            this.gb_db_show.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -85,7 +85,7 @@
             // tmsi_login
             // 
             this.tmsi_login.Name = "tmsi_login";
-            this.tmsi_login.Size = new System.Drawing.Size(180, 22);
+            this.tmsi_login.Size = new System.Drawing.Size(100, 22);
             this.tmsi_login.Text = "登录";
             this.tmsi_login.Click += new System.EventHandler(this.tmsi_login_Click);
             // 
@@ -96,6 +96,12 @@
             this.tmsi_about.Name = "tmsi_about";
             this.tmsi_about.Size = new System.Drawing.Size(44, 21);
             this.tmsi_about.Text = "关于";
+            // 
+            // 关于软件ToolStripMenuItem
+            // 
+            this.关于软件ToolStripMenuItem.Name = "关于软件ToolStripMenuItem";
+            this.关于软件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.关于软件ToolStripMenuItem.Text = "关于软件";
             // 
             // splitContainer1
             // 
@@ -113,8 +119,27 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(830, 448);
-            this.splitContainer1.SplitterDistance = 275;
+            this.splitContainer1.SplitterDistance = 262;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // db_tb_show
+            // 
+            this.db_tb_show.Controls.Add(this.lb_tbs);
+            this.db_tb_show.Location = new System.Drawing.Point(12, 173);
+            this.db_tb_show.Name = "db_tb_show";
+            this.db_tb_show.Size = new System.Drawing.Size(238, 262);
+            this.db_tb_show.TabIndex = 1;
+            this.db_tb_show.TabStop = false;
+            this.db_tb_show.Text = "数据库展示";
+            // 
+            // lb_tbs
+            // 
+            this.lb_tbs.FormattingEnabled = true;
+            this.lb_tbs.ItemHeight = 12;
+            this.lb_tbs.Location = new System.Drawing.Point(6, 20);
+            this.lb_tbs.Name = "lb_tbs";
+            this.lb_tbs.Size = new System.Drawing.Size(226, 232);
+            this.lb_tbs.TabIndex = 0;
             // 
             // gb_db_show
             // 
@@ -136,25 +161,6 @@
             this.lb_dbs.TabIndex = 0;
             this.lb_dbs.Click += new System.EventHandler(this.lb_dbs_Click);
             // 
-            // db_tb_show
-            // 
-            this.db_tb_show.Controls.Add(this.lb_tbs);
-            this.db_tb_show.Location = new System.Drawing.Point(12, 173);
-            this.db_tb_show.Name = "db_tb_show";
-            this.db_tb_show.Size = new System.Drawing.Size(238, 262);
-            this.db_tb_show.TabIndex = 1;
-            this.db_tb_show.TabStop = false;
-            this.db_tb_show.Text = "数据库展示";
-            // 
-            // lb_tbs
-            // 
-            this.lb_tbs.FormattingEnabled = true;
-            this.lb_tbs.ItemHeight = 12;
-            this.lb_tbs.Location = new System.Drawing.Point(6, 20);
-            this.lb_tbs.Name = "lb_tbs";
-            this.lb_tbs.Size = new System.Drawing.Size(226, 232);
-            this.lb_tbs.TabIndex = 0;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.BackColor = System.Drawing.SystemColors.Control;
@@ -171,7 +177,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.rtb_model_show);
-            this.splitContainer2.Size = new System.Drawing.Size(551, 448);
+            this.splitContainer2.Size = new System.Drawing.Size(564, 448);
             this.splitContainer2.SplitterDistance = 127;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -191,51 +197,15 @@
             this.gb_operator.TabStop = false;
             this.gb_operator.Text = "操作栏";
             // 
-            // btn_create_model
+            // btn_export_all_model
             // 
-            this.btn_create_model.AutoSize = true;
-            this.btn_create_model.Location = new System.Drawing.Point(19, 77);
-            this.btn_create_model.Name = "btn_create_model";
-            this.btn_create_model.Size = new System.Drawing.Size(87, 31);
-            this.btn_create_model.TabIndex = 0;
-            this.btn_create_model.Text = "生成数据模型";
-            this.btn_create_model.UseVisualStyleBackColor = true;
-            this.btn_create_model.Click += new System.EventHandler(this.btn_create_model_Click);
-            // 
-            // rtb_model_show
-            // 
-            this.rtb_model_show.Location = new System.Drawing.Point(3, 3);
-            this.rtb_model_show.Name = "rtb_model_show";
-            this.rtb_model_show.Size = new System.Drawing.Size(543, 309);
-            this.rtb_model_show.TabIndex = 0;
-            this.rtb_model_show.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "命名空间名称:";
-            // 
-            // txt_namespace
-            // 
-            this.txt_namespace.Location = new System.Drawing.Point(106, 20);
-            this.txt_namespace.Name = "txt_namespace";
-            this.txt_namespace.Size = new System.Drawing.Size(157, 21);
-            this.txt_namespace.TabIndex = 2;
-            // 
-            // btn_export_model
-            // 
-            this.btn_export_model.AutoSize = true;
-            this.btn_export_model.Location = new System.Drawing.Point(128, 77);
-            this.btn_export_model.Name = "btn_export_model";
-            this.btn_export_model.Size = new System.Drawing.Size(87, 31);
-            this.btn_export_model.TabIndex = 3;
-            this.btn_export_model.Text = "导出数据模型";
-            this.btn_export_model.UseVisualStyleBackColor = true;
-            this.btn_export_model.Click += new System.EventHandler(this.btn_export_model_Click);
+            this.btn_export_all_model.AutoSize = true;
+            this.btn_export_all_model.Location = new System.Drawing.Point(241, 77);
+            this.btn_export_all_model.Name = "btn_export_all_model";
+            this.btn_export_all_model.Size = new System.Drawing.Size(171, 31);
+            this.btn_export_all_model.TabIndex = 6;
+            this.btn_export_all_model.Text = "导出全部模型（当前数据库）";
+            this.btn_export_all_model.UseVisualStyleBackColor = true;
             // 
             // txt_export_path
             // 
@@ -253,21 +223,51 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "导出文件路径:";
             // 
-            // 关于软件ToolStripMenuItem
+            // btn_export_model
             // 
-            this.关于软件ToolStripMenuItem.Name = "关于软件ToolStripMenuItem";
-            this.关于软件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.关于软件ToolStripMenuItem.Text = "关于软件";
+            this.btn_export_model.AutoSize = true;
+            this.btn_export_model.Location = new System.Drawing.Point(128, 77);
+            this.btn_export_model.Name = "btn_export_model";
+            this.btn_export_model.Size = new System.Drawing.Size(87, 31);
+            this.btn_export_model.TabIndex = 3;
+            this.btn_export_model.Text = "导出数据模型";
+            this.btn_export_model.UseVisualStyleBackColor = true;
+            this.btn_export_model.Click += new System.EventHandler(this.btn_export_model_Click);
             // 
-            // btn_export_all_model
+            // txt_namespace
             // 
-            this.btn_export_all_model.AutoSize = true;
-            this.btn_export_all_model.Location = new System.Drawing.Point(241, 77);
-            this.btn_export_all_model.Name = "btn_export_all_model";
-            this.btn_export_all_model.Size = new System.Drawing.Size(171, 31);
-            this.btn_export_all_model.TabIndex = 6;
-            this.btn_export_all_model.Text = "导出全部模型（当前数据库）";
-            this.btn_export_all_model.UseVisualStyleBackColor = true;
+            this.txt_namespace.Location = new System.Drawing.Point(106, 20);
+            this.txt_namespace.Name = "txt_namespace";
+            this.txt_namespace.Size = new System.Drawing.Size(157, 21);
+            this.txt_namespace.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "命名空间名称:";
+            // 
+            // btn_create_model
+            // 
+            this.btn_create_model.AutoSize = true;
+            this.btn_create_model.Location = new System.Drawing.Point(19, 77);
+            this.btn_create_model.Name = "btn_create_model";
+            this.btn_create_model.Size = new System.Drawing.Size(87, 31);
+            this.btn_create_model.TabIndex = 0;
+            this.btn_create_model.Text = "生成数据模型";
+            this.btn_create_model.UseVisualStyleBackColor = true;
+            this.btn_create_model.Click += new System.EventHandler(this.btn_create_model_Click);
+            // 
+            // rtb_model_show
+            // 
+            this.rtb_model_show.Location = new System.Drawing.Point(3, 3);
+            this.rtb_model_show.Name = "rtb_model_show";
+            this.rtb_model_show.Size = new System.Drawing.Size(556, 309);
+            this.rtb_model_show.TabIndex = 0;
+            this.rtb_model_show.Text = "";
             // 
             // Main_Form
             // 
@@ -289,8 +289,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.gb_db_show.ResumeLayout(false);
             this.db_tb_show.ResumeLayout(false);
+            this.gb_db_show.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();

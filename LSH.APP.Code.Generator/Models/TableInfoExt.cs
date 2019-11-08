@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LSH.APP.Code.Generator.Models
 {
-   public class TableInfoExt
+    public class TableInfoExt
     {
-           public  TableInfo TableInfo { get; set; }
-           public IEnumerable<TableColumnInfo> TableColumnInfos { get; set; }
+        public TableInfo TableInfo { get; set; }
+        public IEnumerable<TableColumnInfo> TableColumnInfos { get; set; }
 
     }
 }
