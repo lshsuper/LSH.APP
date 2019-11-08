@@ -8,5 +8,6 @@ namespace LSH.APP.Code.Generator.Models
 {
   public  class DatabaseInfo
     {
+        public string DatabaseName { get; set; }
     }
 }
