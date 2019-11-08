@@ -57,10 +57,16 @@ namespace LSH.APP.Code.Generator
             if (lb_dbs.SelectedValue == null)
                 return;
             string db = lb_dbs.SelectedValue.ToString();
-            var tbs = Utils.GetTables(AppContext.DatabaseInfo,db);
+            var tbs = Utils.GetTables(AppContext.DatabaseInfo, db);
             lb_tbs.DisplayMember = "key";
             lb_tbs.ValueMember = "value";
             lb_tbs.DataSource = BuildTbs(tbs);
+            AppContext.CurrentDatabase = new DatabaseInfoExt()
+            {
+                DatabaseName = db,
+                TableInfos = tbs
+            };
+
         }
 
 
@@ -99,38 +105,16 @@ namespace LSH.APP.Code.Generator
             }
             string db = lb_dbs.SelectedValue.ToString();
             TableInfo tb = JsonHelper.ToObject<TableInfo>(lb_tbs.SelectedValue.ToString());
-            var columns = Utils.GetColumns(AppContext.DatabaseInfo,db,tb.TableName);
+            var columns = Utils.GetColumns(AppContext.DatabaseInfo, db, tb.TableName);
             //持久化
-            AppContext.CurrentTable = new TableInfoExt() {
-                      TableColumnInfos= columns,
-                      TableInfo=tb
-            };
-            StringBuilder tmpl = new StringBuilder();
-            tmpl.AppendLine("using System;");
-            tmpl.AppendLine("using System.Collections.Generic;");
-            tmpl.AppendLine("using System.Runtime.Serialization;");
-            tmpl.AppendFormat("namespace {0} \r\n", txt_namespace.Text);
-            tmpl.AppendLine("{");
-            tmpl.AppendLine($"{" ".Repeat(2)}///<summary>");
-            tmpl.AppendFormat("{0}///{1}\r\n"," ".Repeat(2),tb.TableComment);
-            tmpl.AppendLine($"{" ".Repeat(2)}///<summary>");
-            tmpl.AppendLine($"{" ".Repeat(2)}[DataContract]");
-            tmpl.AppendFormat("{0}public class {1}\r\n"," ".Repeat(2),tb.TableName);
-            tmpl.AppendLine($"{" ".Repeat(2)}{"{"}");
-            
-            columns.ForEach((ele, i) =>
+            AppContext.CurrentTable = new TableInfoExt()
             {
-                tmpl.AppendLine($"{" ".Repeat(6)}///<summary>");
-                tmpl.AppendFormat("{0}///{1}\r\n"," ".Repeat(6),ele.ColumnComment);
-                tmpl.AppendLine($"{" ".Repeat(6)}///<summary>");
-                tmpl.AppendLine($"{" ".Repeat(6)}[DataMember]");
-                tmpl.AppendFormat("{0}public {1} {2} {3}\r\n"," ".Repeat(6),Utils.ChangeDbType(ele.DataType), ele.ColumnName, "{get;set;}");
-            });
-            tmpl.AppendLine($"{" ".Repeat(4)}{"}"}");
-            tmpl.AppendLine("}");
-            rtb_model_show.Text = tmpl.ToString();
+                TableColumnInfos = columns,
+                TableInfo = tb
+            };
+            rtb_model_show.Text = BuildModelTmpl(columns, tb);
             Utils.ChangeColor(rtb_model_show);
-            
+
         }
         /// <summary>
         /// 导出数据模型
@@ -154,7 +138,62 @@ namespace LSH.APP.Code.Generator
 
                 MessageBox.Show("模型文件生成失败");
             }
-           
+
+        }
+
+        private void Btn_export_all_model_Click(object sender, EventArgs e)
+        {
+
+            if (!txt_export_path.Text.IsPath())
+            {
+                MessageBox.Show("导出文件路径有误");
+                return;
+            }
+            Dictionary<string, byte[]> bufferMap = new Dictionary<string, byte[]>();
+            AppContext.CurrentDatabase.TableInfos.ForEach((ele, i) =>
+            {
+                var columns = Utils.GetColumns(AppContext.DatabaseInfo, AppContext.CurrentDatabase.DatabaseName, ele.TableName);
+                string tmpl = BuildModelTmpl(columns,ele);
+                bufferMap.Add($"{ele.TableName}.cs",Encoding.UTF8.GetBytes(tmpl));
+            });
+
+            //打包
+           bool result=FileHelper.Zip(bufferMap,$"{txt_export_path.Text}\\{AppContext.CurrentDatabase.DatabaseName}.zip");
+            if (!result)
+            {
+                MessageBox.Show("打包失败");
+                return;
+            }
+            MessageBox.Show("打包成功");
+        }
+
+
+        private string BuildModelTmpl(IEnumerable<TableColumnInfo> columns, TableInfo tb)
+        {
+            StringBuilder tmpl = new StringBuilder();
+            tmpl.AppendLine("using System;");
+            tmpl.AppendLine("using System.Collections.Generic;");
+            tmpl.AppendLine("using System.Runtime.Serialization;");
+            tmpl.AppendFormat("namespace {0} \r\n", txt_namespace.Text);
+            tmpl.AppendLine("{");
+            tmpl.AppendLine($"{" ".Repeat(2)}///<summary>");
+            tmpl.AppendFormat("{0}///{1}\r\n", " ".Repeat(2), tb.TableComment);
+            tmpl.AppendLine($"{" ".Repeat(2)}///<summary>");
+            tmpl.AppendLine($"{" ".Repeat(2)}[DataContract]");
+            tmpl.AppendFormat("{0}public class {1}\r\n", " ".Repeat(2), tb.TableName);
+            tmpl.AppendLine($"{" ".Repeat(2)}{"{"}");
+
+            columns.ForEach((ele, i) =>
+            {
+                tmpl.AppendLine($"{" ".Repeat(6)}///<summary>");
+                tmpl.AppendFormat("{0}///{1}\r\n", " ".Repeat(6), ele.ColumnComment);
+                tmpl.AppendLine($"{" ".Repeat(6)}///<summary>");
+                tmpl.AppendLine($"{" ".Repeat(6)}[DataMember]");
+                tmpl.AppendFormat("{0}public {1} {2} {3}\r\n", " ".Repeat(6), Utils.ChangeDbType(ele.DataType), ele.ColumnName, "{get;set;}");
+            });
+            tmpl.AppendLine($"{" ".Repeat(4)}{"}"}");
+            tmpl.AppendLine("}");
+            return tmpl.ToString();
         }
     }
 }

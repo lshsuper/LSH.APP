@@ -9,7 +9,7 @@ namespace LSH.APP.Code.Generator.Common
 {
   public class DapperContext
     {
-        public static IEnumerable<T> Query<T>(DatabaseInfo databaseInfo,string sql,object  param=null)
+        public static IEnumerable<T> Query<T>(DatabaseConnectionOption databaseInfo,string sql,object  param=null)
         {
             using (var  conn=DatabaseFactory.Connection(databaseInfo))
             {

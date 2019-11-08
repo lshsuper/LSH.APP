@@ -12,14 +12,14 @@ namespace LSH.APP.Code.Generator.Common
 {
     public class DatabaseFactory
     {
-        public static IDbConnection Connection(DatabaseInfo databaseInfo)
+        public static IDbConnection Connection(DatabaseConnectionOption option)
         {
-            switch (databaseInfo.DatabaseType)
+            switch (option.DatabaseType)
             {
                 case DatabaseTypeEnum.Mysql:
-                    return new MySqlConnection($"Server={databaseInfo.IP};Port={databaseInfo.Port};Database={databaseInfo.DefaultDatabase};Uid={databaseInfo.Login};Pwd={databaseInfo.Pwd};");
+                    return new MySqlConnection(option.ConnStr);
                 case DatabaseTypeEnum.SqlServer:
-                    return new SqlConnection($"Server={databaseInfo.IP},{databaseInfo.Port};Database={databaseInfo.DefaultDatabase};User Id={databaseInfo.Login};Password={databaseInfo.Pwd};");
+                    return new SqlConnection(option.ConnStr);
                 default:
                     throw new NotSupportedException("不支持");
             }

@@ -9,7 +9,9 @@ namespace LSH.APP.Code.Generator.Common
 {
     public class AppContext
     {
-         public static DatabaseInfo DatabaseInfo { get; set; }
-         public  static TableInfoExt CurrentTable { get; set; }
+        public static DatabaseConnectionOption DatabaseInfo { get; set; }
+        public static TableInfoExt CurrentTable { get; set; }
+
+        public static DatabaseInfoExt CurrentDatabase { get; set; }
     }
 }

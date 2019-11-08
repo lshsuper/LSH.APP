@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LSH.APP.Code.Generator.Common
@@ -17,6 +18,13 @@ namespace LSH.APP.Code.Generator.Common
                 result += str;
             }
             return result;
+        }
+
+        public static bool IsPath(this string path)
+        {
+            string pattern = @"^[a-zA-Z]:(((\\(?! )[^/:*?<>\""|\\]+)+\\?)|(\\)?)\s*$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(path);
         }
     }
 }
