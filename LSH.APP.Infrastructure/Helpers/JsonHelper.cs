@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Client.Win.App.Common
+namespace LSH.APP.Infrastructure.Helpers
 {
     public class JsonHelper
     {

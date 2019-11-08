@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LSH.APP.Code.Generator.Common
+namespace LSH.APP.Infrastructure.Helpers.Database
 {
 
     /// <summary>

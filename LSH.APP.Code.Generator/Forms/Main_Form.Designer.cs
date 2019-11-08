@@ -214,7 +214,7 @@
             // btn_export_all_model
             // 
             this.btn_export_all_model.AutoSize = true;
-            this.btn_export_all_model.Location = new System.Drawing.Point(321, 96);
+            this.btn_export_all_model.Location = new System.Drawing.Point(322, 92);
             this.btn_export_all_model.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_export_all_model.Name = "btn_export_all_model";
             this.btn_export_all_model.Size = new System.Drawing.Size(283, 39);
@@ -244,7 +244,7 @@
             // btn_export_model
             // 
             this.btn_export_model.AutoSize = true;
-            this.btn_export_model.Location = new System.Drawing.Point(171, 96);
+            this.btn_export_model.Location = new System.Drawing.Point(171, 92);
             this.btn_export_model.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_export_model.Name = "btn_export_model";
             this.btn_export_model.Size = new System.Drawing.Size(143, 39);
@@ -274,7 +274,7 @@
             // btn_create_model
             // 
             this.btn_create_model.AutoSize = true;
-            this.btn_create_model.Location = new System.Drawing.Point(25, 96);
+            this.btn_create_model.Location = new System.Drawing.Point(20, 92);
             this.btn_create_model.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_create_model.Name = "btn_create_model";
             this.btn_create_model.Size = new System.Drawing.Size(143, 39);

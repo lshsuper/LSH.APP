@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace LSH.APP.Code.Generator.Common
+namespace LSH.APP.Infrastructure.Extensions
 {
     public static class StringExtension
     {

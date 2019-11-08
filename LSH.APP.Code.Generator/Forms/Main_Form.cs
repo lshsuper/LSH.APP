@@ -1,4 +1,4 @@
-﻿using Client.Win.App.Common;
+﻿
 using LSH.APP.Code.Generator.Common;
 using LSH.APP.Code.Generator.Forms;
 using LSH.APP.Code.Generator.Models;
@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq;
 using System.IO;
+using LSH.APP.Infrastructure.Helpers;
+using LSH.APP.Infrastructure.Extensions;
 
 namespace LSH.APP.Code.Generator
 {

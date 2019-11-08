@@ -75,14 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AppContext.cs" />
-    <Compile Include="Common\DapperContext.cs" />
-    <Compile Include="Common\DatabaseFactory.cs" />
-    <Compile Include="Common\DatabaseTypeEnum.cs" />
-    <Compile Include="Common\EnumerableExtension.cs" />
-    <Compile Include="Common\EnumExtension.cs" />
-    <Compile Include="Common\FileHelper.cs" />
-    <Compile Include="Common\JsonHelper.cs" />
-    <Compile Include="Common\StringExtension.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Forms\Main_Form.cs">
       <SubType>Form</SubType>
@@ -97,7 +89,6 @@
       <DependentUpon>DbLogin_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\DatabaseInfo.cs" />
-    <Compile Include="Models\DatabaseConnectionOption.cs" />
     <Compile Include="Models\DatabaseInfoExt.cs" />
     <Compile Include="Models\TableColumnInfo.cs" />
     <Compile Include="Models\TableInfoExt.cs" />
@@ -133,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LSH.APP.Infrastructure\LSH.APP.Infrastructure.csproj">
+      <Project>{ccc8780a-7083-4a16-8149-2ecdb5208ee5}</Project>
+      <Name>LSH.APP.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

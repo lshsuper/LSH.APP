@@ -1,5 +1,7 @@
 ﻿using LSH.APP.Code.Generator.Common;
 using LSH.APP.Code.Generator.Models;
+using LSH.APP.Infrastructure.Extensions;
+using LSH.APP.Infrastructure.Helpers.Database;
 using LSH.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;

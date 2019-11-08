@@ -7,7 +7,7 @@ using ICSharpCode.SharpZipLib.Zip;
 using System.IO;
 using LSH.Infrastructure.Extensions;
 
-namespace LSH.APP.Code.Generator.Common
+namespace LSH.APP.Infrastructure.Helpers
 {
     public class FileHelper
     {
