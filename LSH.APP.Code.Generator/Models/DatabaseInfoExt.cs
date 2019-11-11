@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace LSH.APP.Code.Generator.Models
 {
-  public  class DatabaseInfo
+  public  class DatabaseInfoExt
     {
-        public string DatabaseName { get; set; }
+           public   string DatabaseName { get; set; }
+
+           public IEnumerable<TableInfo> TableInfos { get; set; }
     }
 }

@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LSH.APP.Infrastructure.Extensions;
+using LSH.APP.Infrastructure.Helpers.Database;
 
 namespace LSH.APP.Code.Generator.Common
 {
@@ -59,6 +61,8 @@ namespace LSH.APP.Code.Generator.Common
             ChangeKeyColor("get", Color.Blue, richTextBox);
             ChangeKeyColor("byte", Color.Blue, richTextBox);
             ChangeKeyColor("set", Color.Blue, richTextBox);
+            ChangeKeyColor("DataContract", Color.Green, richTextBox);
+            ChangeKeyColor("DataMember", Color.Green, richTextBox);
         }
 
         /// <summary>
@@ -82,7 +86,7 @@ namespace LSH.APP.Code.Generator.Common
             return content;
         }
 
-        public  static IEnumerable<string> GetDatabases(DatabaseInfo databaseInfo)
+        public  static IEnumerable<string> GetDatabases(DatabaseConnectionOption databaseInfo)
         {
             switch (databaseInfo.DatabaseType)
             {
@@ -100,7 +104,7 @@ namespace LSH.APP.Code.Generator.Common
         /// <param name="databaseInfo"></param>
         /// <param name="db"></param>
         /// <returns></returns>
-        public  static IEnumerable<TableInfo> GetTables(DatabaseInfo databaseInfo,string db)
+        public  static IEnumerable<TableInfo> GetTables(DatabaseConnectionOption databaseInfo,string db)
         {
            
             switch (databaseInfo.DatabaseType)
@@ -121,7 +125,7 @@ namespace LSH.APP.Code.Generator.Common
         /// <param name="db"></param>
         /// <param name="tb"></param>
         /// <returns></returns>
-        public static IEnumerable<TableColumnInfo> GetColumns(DatabaseInfo databaseInfo, string db,string  tb)
+        public static IEnumerable<TableColumnInfo> GetColumns(DatabaseConnectionOption databaseInfo, string db,string  tb)
         {
 
             switch (databaseInfo.DatabaseType)

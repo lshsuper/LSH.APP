@@ -1,5 +1,7 @@
 ﻿using LSH.APP.Code.Generator.Common;
 using LSH.APP.Code.Generator.Models;
+using LSH.APP.Infrastructure.Extensions;
+using LSH.APP.Infrastructure.Helpers.Database;
 using LSH.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;
@@ -23,10 +25,10 @@ namespace LSH.APP.Code.Generator.Forms
         public Action<DataTable> _buildDbsShow;
         private void btn_login_Click(object sender, EventArgs e)
         {
-            DatabaseInfo databaseInfo = new DatabaseInfo()
+            DatabaseConnectionOption databaseInfo = new DatabaseConnectionOption()
             {
                 DatabaseType = (DatabaseTypeEnum)Enum.Parse(typeof(DatabaseTypeEnum), cb_db_type.SelectedValue.ToString()),
-                IP = txt_ip.Text,
+                Server = txt_server.Text,
                 Port = txt_port.Text,
                 Pwd = txt_pwd.Text,
                 DefaultDatabase=txt_default_db.Text,
@@ -58,7 +60,7 @@ namespace LSH.APP.Code.Generator.Forms
 
 
             txt_login.Text = "sa";
-            txt_ip.Text = "127.0.0.1";
+            txt_server.Text = "127.0.0.1";
             txt_port.Text = "1434";
             txt_pwd.Text = "1308956271";
             txt_default_db.Text = "CTFApp";
