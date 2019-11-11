@@ -12,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
 using System.IO;
 
 namespace LSH.APP.Code.Generator
@@ -41,9 +40,6 @@ namespace LSH.APP.Code.Generator
                 lb_dbs.DataSource = dt;
             });
             _dbLogin_Form.ShowDialog();
-
-
-
 
         }
 
@@ -155,6 +151,11 @@ namespace LSH.APP.Code.Generator
                 MessageBox.Show("模型文件生成失败");
             }
            
+        }
+
+        private void btn_export_all_model_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

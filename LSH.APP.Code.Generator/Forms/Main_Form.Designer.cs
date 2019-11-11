@@ -206,6 +206,7 @@
             this.btn_export_all_model.TabIndex = 6;
             this.btn_export_all_model.Text = "导出全部模型（当前数据库）";
             this.btn_export_all_model.UseVisualStyleBackColor = true;
+            this.btn_export_all_model.Click += new System.EventHandler(this.btn_export_all_model_Click);
             // 
             // txt_export_path
             // 
