@@ -151,12 +151,12 @@ namespace LSH.APP.Code.Generator
             AppContext.CurrentDatabase.TableInfos.ForEach((ele, i) =>
             {
                 var columns = Utils.GetColumns(AppContext.DatabaseInfo, AppContext.CurrentDatabase.DatabaseName, ele.TableName);
-                string tmpl = BuildModelTmpl(columns,ele);
-                bufferMap.Add($"{ele.TableName}.cs",Encoding.UTF8.GetBytes(tmpl));
+                string tmpl = BuildModelTmpl(columns, ele);
+                bufferMap.Add($"{ele.TableName}.cs", Encoding.UTF8.GetBytes(tmpl));
             });
 
             //打包
-           bool result=FileHelper.Zip(bufferMap,$"{txt_export_path.Text}\\{AppContext.CurrentDatabase.DatabaseName}.zip");
+            bool result = FileHelper.Zip(bufferMap, $"{txt_export_path.Text}\\{AppContext.CurrentDatabase.DatabaseName}.zip");
             if (!result)
             {
                 MessageBox.Show("打包失败");
@@ -196,6 +196,45 @@ namespace LSH.APP.Code.Generator
 
         private void btn_export_all_model_Click(object sender, EventArgs e)
         {
+
+        }
+        /// <summary>
+        ///生成数据库文档
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_build_dbdoc_Click(object sender, EventArgs e)
+        {
+
+            var allTables = AppContext.CurrentDatabase.TableInfos;
+            var db = AppContext.CurrentDatabase;
+            List<WordTableOption> options = new List<WordTableOption>();
+            allTables.ForEach((table, i) =>
+            {
+                string title = string.IsNullOrEmpty(table.TableComment) ? $"表名:{table.TableName}": $"表名:{table.TableName}({ table.TableComment})";
+                WordTableOption option = new WordTableOption()
+                {
+                    Title = title
+                };
+                option.Headers.AddRange(new[] { "序号", "名称", "类型", "描述" });
+
+                var columns = Utils.GetColumns(AppContext.DatabaseInfo, db.DatabaseName, table.TableName);
+                columns.ForEach((row, j) =>
+                {
+                    option.Rows.Add(new List<string>() { j.ToString(), row.ColumnName, row.DataType, row.ColumnComment });
+                });
+                options.Add(option);
+            });
+
+            bool result=WordHelper.CreateTable(options, txt_dbdoc_path.Text);
+            if (result)
+            {
+                MessageBox.Show("数据库文档生成成功");
+                return;
+            }
+
+            MessageBox.Show("数据库文档生成失败！");
+           
 
         }
     }
