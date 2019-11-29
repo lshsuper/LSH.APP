@@ -216,17 +216,18 @@ namespace LSH.APP.Code.Generator
                 {
                     Title = title
                 };
-                option.Headers.AddRange(new[] { "序号", "名称", "类型", "描述" });
+                option.Headers.AddRange(new[] { "序号", "名称", "类型","默认值" ,"描述" });
 
                 var columns = Utils.GetColumns(AppContext.DatabaseInfo, db.DatabaseName, table.TableName);
                 columns.ForEach((row, j) =>
                 {
-                    option.Rows.Add(new List<string>() { j.ToString(), row.ColumnName, row.DataType, row.ColumnComment });
+                    option.Rows.Add(new List<string>() { j.ToString(), row.ColumnName, row.ColumnType,row.DefaultValue ,row.ColumnComment });
                 });
                 options.Add(option);
             });
 
-            bool result=WordHelper.CreateTable(options, txt_dbdoc_path.Text);
+            string mainTitle =$"数据库名:{db.DatabaseName}";
+            bool result=WordHelper.CreateTable(options, mainTitle,txt_dbdoc_path.Text);
             if (result)
             {
                 MessageBox.Show("数据库文档生成成功");

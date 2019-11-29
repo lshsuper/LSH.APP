@@ -12,7 +12,7 @@ namespace LSH.APP.Infrastructure.Helpers
 {
     public class WordHelper
     {
-        public static bool CreateTable(List<WordTableOption> options, string fullPath)
+        public static bool CreateTable(List<WordTableOption> options,string mainTitle,string fullPath)
         {
 
             try
@@ -20,6 +20,13 @@ namespace LSH.APP.Infrastructure.Helpers
                 //创建Word文档 
                 using (DocX document = DocX.Create(fullPath))
                 {
+                    //主标题
+                    Paragraph mh = document.InsertParagraph();
+                    mh.Alignment = Alignment.center;
+                    mh.Append(mainTitle).Bold();
+                    mh.LineSpacingBefore = 5f;
+                    mh.LineSpacingAfter = 5f;
+
                     options.ForEach(ele =>
                     {
                         //添加表格
@@ -31,6 +38,7 @@ namespace LSH.APP.Infrastructure.Helpers
                         {
                             var cell = table.Rows[0].Cells[i];
                             cell.FillColor=Color.Black;
+                            cell.VerticalAlignment = VerticalAlignment.Center;
                             cell.Paragraphs[0].Append(ele.Headers[i]).Bold().Color(Color.White);
                         }
                         //填充主体
@@ -42,13 +50,14 @@ namespace LSH.APP.Infrastructure.Helpers
                                
                             }
                         }
-
+                        
+                        //做标题
                         Paragraph h = document.InsertParagraph();
                         h.Alignment = Alignment.center;
                         h.Append(ele.Title).Bold();
                         h.InsertTableAfterSelf(table);
-                        h.LineSpacingBefore = 2;
-                        h.LineSpacingAfter = 1;
+                        h.LineSpacingBefore = 5f;
+                        h.LineSpacingAfter = 5f;
                     });
                     document.Save();
                 }

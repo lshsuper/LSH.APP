@@ -11,5 +11,8 @@ namespace LSH.APP.Code.Generator.Models
         public   string ColumnComment { get; set; }
         public   string DataType { get; set; }
         public   string ColumnName { get; set; }
+
+        public   string DefaultValue { get; set; }
+        public  string ColumnType { get; set; }
     }
 }
