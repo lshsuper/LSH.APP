@@ -40,6 +40,7 @@ namespace LSH.APP.Infrastructure.Helpers
                             cell.FillColor=Color.Black;
                             cell.VerticalAlignment = VerticalAlignment.Center;
                             cell.Paragraphs[0].Append(ele.Headers[i]).Bold().Color(Color.White);
+                           
                         }
                         //填充主体
                         for (int i = 0; i < ele.Rows.Count; i++)

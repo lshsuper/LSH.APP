@@ -14,5 +14,8 @@ namespace LSH.APP.Code.Generator.Models
 
         public   string DefaultValue { get; set; }
         public  string ColumnType { get; set; }
+        public  bool IsPrimary { get; set; }
+
+        public  bool IsNullAble { get; set; }
     }
 }

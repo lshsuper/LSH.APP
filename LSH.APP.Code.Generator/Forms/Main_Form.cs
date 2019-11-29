@@ -205,6 +205,12 @@ namespace LSH.APP.Code.Generator
         /// <param name="e"></param>
         private void btn_build_dbdoc_Click(object sender, EventArgs e)
         {
+            //校验一波
+            if (string.IsNullOrEmpty(txt_dbdoc_path.Text))
+            {
+                MessageBox.Show("数据库文档导出路径不能为空");
+                return;
+            }
 
             var allTables = AppContext.CurrentDatabase.TableInfos;
             var db = AppContext.CurrentDatabase;
@@ -216,12 +222,12 @@ namespace LSH.APP.Code.Generator
                 {
                     Title = title
                 };
-                option.Headers.AddRange(new[] { "序号", "名称", "类型","默认值" ,"描述" });
+                option.Headers.AddRange(new[] { "序号", "名称", "类型","默认值" ,"主键","允许空","描述" });
 
                 var columns = Utils.GetColumns(AppContext.DatabaseInfo, db.DatabaseName, table.TableName);
                 columns.ForEach((row, j) =>
                 {
-                    option.Rows.Add(new List<string>() { j.ToString(), row.ColumnName, row.ColumnType,row.DefaultValue ,row.ColumnComment });
+                    option.Rows.Add(new List<string>() { j.ToString(), row.ColumnName, row.ColumnType,row.DefaultValue ,row.IsPrimary?"是":"",row.IsNullAble?"是":"否",row.ColumnComment });
                 });
                 options.Add(option);
             });

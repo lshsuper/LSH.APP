@@ -18,5 +18,26 @@ namespace LSH.APP.Code.Generator.Common
                return  conn.Query<T>(sql,param);
             }
         }
+        public static T Find<T>(DatabaseConnectionOption databaseInfo,string sql,object param=null)
+        {
+            using (var conn = DatabaseFactory.Connection(databaseInfo))
+            {
+                return conn.QueryFirstOrDefault<T>(sql,param);
+            }
+        }
+        public static int Excute(DatabaseConnectionOption databaseInfo, string sql, object param = null)
+        {
+            using (var conn = DatabaseFactory.Connection(databaseInfo))
+            {
+                return conn.Execute(sql, param);
+            }
+        }
+        public static T Scalar<T>(DatabaseConnectionOption databaseInfo, string sql, object param = null)
+        {
+            using (var conn = DatabaseFactory.Connection(databaseInfo))
+            {
+                return conn.ExecuteScalar<T>(sql, param);
+            }
+        }
     }
 }

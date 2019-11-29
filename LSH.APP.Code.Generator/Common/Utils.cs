@@ -131,7 +131,7 @@ namespace LSH.APP.Code.Generator.Common
             switch (databaseInfo.DatabaseType)
             {
                 case DatabaseTypeEnum.Mysql:
-                    return DapperContext.Query<TableColumnInfo>(databaseInfo, $"select column_type ColumnType,column_default DefaultValue,column_comment ColumnComment,data_type DataType,column_name  ColumnName from information_schema.columns where table_schema='{db}' and table_name='{tb}'");
+                    return DapperContext.Query<TableColumnInfo>(databaseInfo, $"select if(IS_NULLABLE='YES',1,0) IsNullAble,if(column_key='PRI',1,0)IsPrimary,column_type ColumnType,column_default DefaultValue,column_comment ColumnComment,data_type DataType,column_name  ColumnName from information_schema.columns where table_schema='{db}' and table_name='{tb}'");
                 case DatabaseTypeEnum.SqlServer:
                     return DapperContext.Query<TableColumnInfo>(databaseInfo,$"use {db} select syscolumns.name as 'ColumnName',systypes.name as 'DataType',sys.extended_properties.value as 'ColumnComment'  from syscolumns inner join sysobjects on syscolumns.id=sysobjects.id inner join systypes on syscolumns.xtype=systypes.xtype left join sys.extended_properties on sys.extended_properties.major_id=syscolumns.id and sys.extended_properties.minor_id=syscolumns.colorder where sysobjects.name='{tb}' and systypes.name<>'sysname' order by sys.extended_properties.minor_id asc");
                 default:
