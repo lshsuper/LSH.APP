@@ -70,10 +70,13 @@
     <Compile Include="Extensions\EnumerableExtension.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Helpers\Database\DapperTableAttribute.cs" />
     <Compile Include="Helpers\Database\Dapper\DapperContext.cs" />
     <Compile Include="Helpers\Database\DatabaseConnectionOption.cs" />
     <Compile Include="Helpers\Database\DatabaseFactory.cs" />
     <Compile Include="Helpers\Database\DatabaseTypeEnum.cs" />
+    <Compile Include="Helpers\Database\Repository\DapperRepository.cs" />
+    <Compile Include="Helpers\Database\Repository\IRepository.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Helpers\WordHelper.cs" />
@@ -82,5 +85,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
