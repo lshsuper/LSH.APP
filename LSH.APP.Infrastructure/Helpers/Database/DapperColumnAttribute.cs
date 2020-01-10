@@ -10,11 +10,11 @@ namespace LSH.APP.Infrastructure.Helpers.Database
     {
 
         public bool IsKey { get; set; }
-        public bool IsPrimi { get}
+        public bool IsPrimi { get; set; }
         public string Name { get; set; }
         public DapperColumnAttribute(string  name)
         {
-            Name=name
+            Name = name;
         }
     }
 }

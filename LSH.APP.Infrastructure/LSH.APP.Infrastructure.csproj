@@ -70,6 +70,7 @@
     <Compile Include="Extensions\EnumerableExtension.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Helpers\Database\DapperColumnAttribute.cs" />
     <Compile Include="Helpers\Database\DapperTableAttribute.cs" />
     <Compile Include="Helpers\Database\Dapper\DapperContext.cs" />
     <Compile Include="Helpers\Database\DatabaseConnectionOption.cs" />

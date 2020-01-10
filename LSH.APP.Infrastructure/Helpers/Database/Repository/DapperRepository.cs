@@ -14,7 +14,7 @@ namespace LSH.APP.Infrastructure.Helpers.Database.Repository
             var attr=t.GetCustomAttributes(false).FirstOrDefault(f=>f.GetType()==typeof(DapperTableAttribute)) as DapperTableAttribute;
             string sql = $"select count(1) from {attr.Name}";
             
-            return null;
+            return 1;
         }
 
         public T Find(int id)
